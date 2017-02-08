@@ -99,9 +99,9 @@ const uint8_t keymaps[][MATRIX_ROWS][MATRIX_COLS] PROGMEM = {
      * |-----------------------------------------------------------|
      * |Caps |Prv|Ply|Nxt|Stp|   |   |   |Psc|Slk|Pus|Up |   |Backs|
      * |-----------------------------------------------------------|
-     * |      |V- |V+ |Vm |   |   | * | / |Hom|PgU|Lft|Rgt|Enter   |
+     * |      |V- |V+ |Vm |   |   | * | / |Hom|PgU|Lft|Rgt| Enter  |
      * |-----------------------------------------------------------|
-     * |        |F14|F15|   |FN1|FN2| + | - |End|PgD|Dwn|      |   |
+     * |        |F14|F15|   |FN3|FN2| + | - |End|PgD|Dwn|      |   |
      * `-----------------------------------------------------------'
      *       |   |     |                       |     |   |
      *       `-------------------------------------------'
@@ -109,7 +109,7 @@ const uint8_t keymaps[][MATRIX_ROWS][MATRIX_COLS] PROGMEM = {
     KEYMAP(GRV, F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9,  F10, F11, F12, INS, DEL, \
            CAPS,MPRV,MPLY,MNXT,MSTP,TRNS,TRNS,TRNS,PSCR,SLCK,PAUS,UP,  TRNS,BSPC,     \
            TRNS,VOLD,VOLU,MUTE,TRNS,TRNS,PAST,PSLS,HOME,PGUP,LEFT,RGHT,PENT,          \
-           FN4, F14, F15, TRNS,FN3, FN2, PPLS,PMNS,END, PGDN,DOWN,TRNS,TRNS,          \
+           TRNS, F14, F15, FN4, FN3, FN2, PPLS,PMNS,END, PGDN,DOWN,TRNS,TRNS,          \
                 TRNS,TRNS,          TRNS,               TRNS,TRNS),
 
     /* Layer 4: Vim and number pad Layer
