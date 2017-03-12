@@ -101,7 +101,7 @@ const uint8_t keymaps[][MATRIX_ROWS][MATRIX_COLS] PROGMEM = {
      * |-----------------------------------------------------------|
      * |      |V- |V+ |Vm |   |   | * | / |Hom|PgU|Lft|Rgt| Enter  |
      * |-----------------------------------------------------------|
-     * |        |F14|F15|   |FN3|FN2| + | - |End|PgD|Dwn|      |   |
+     * |        |F14|F15|FN4|FN3|FN2| + | - |End|PgD|Dwn|      |   |
      * `-----------------------------------------------------------'
      *       |   |     |                       |     |   |
      *       `-------------------------------------------'
@@ -118,17 +118,17 @@ const uint8_t keymaps[][MATRIX_ROWS][MATRIX_COLS] PROGMEM = {
      * |-----------------------------------------------------------|
      * |NmLk | 7 | 8 | 9 |   |   |   |   |   |   |   |   |   |     |
      * |-----------------------------------------------------------|
-     * |Enter | 4 | 5 | 6 | * | / |Lft|Dwn|Up |Rgt|   |   |        |
+     * |Enter | 4 | 5 | 6 | * | / |M< |MV |M^ |M> |   |   |        |
      * |-----------------------------------------------------------|
-     * |   =    | 1 | 2 | 3 | + | - |   |   |   |   |   |      |   |
+     * |   =    | 1 | 2 | 3 | + | - |LMB|MMB|RMB|   |   |      |   |
      * `-----------------------------------------------------------'
      *       | . |  0  |                       |     |   |
      *       `-------------------------------------------'
      */
     KEYMAP(FN4, TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS, \
            NLCK,P7,  P8,  P9,  TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,      \
-           PENT,P4,  P5,  P6,  PAST,PSLS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,           \
-           PEQL,P1,  P2,  P3,  PPLS,PMNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,           \
+           PENT,P4,  P5,  P6,  PAST,PSLS,MS_L,MS_D,MS_U,MS_R,TRNS,TRNS,TRNS,           \
+           PEQL,P1,  P2,  P3,  PPLS,PMNS,BTN1,BTN2,BTN3,TRNS,TRNS,TRNS,TRNS,           \
                 PDOT,P0,            TRNS,               TRNS,TRNS),
 };
 
