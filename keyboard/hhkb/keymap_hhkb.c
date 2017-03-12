@@ -116,7 +116,7 @@ const uint8_t keymaps[][MATRIX_ROWS][MATRIX_COLS] PROGMEM = {
      * ,-----------------------------------------------------------.
      * |VL |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
      * |-----------------------------------------------------------|
-     * |NmLk | 7 | 8 | 9 |   |   |   |   |   |   |   |   |   |     |
+     * |NmLk | 7 | 8 | 9 |   |   |AC0|AC1|AC2|   |   |   |   |     |
      * |-----------------------------------------------------------|
      * |Enter | 4 | 5 | 6 | * | / |M< |MV |M^ |M> |   |   |        |
      * |-----------------------------------------------------------|
@@ -126,7 +126,7 @@ const uint8_t keymaps[][MATRIX_ROWS][MATRIX_COLS] PROGMEM = {
      *       `-------------------------------------------'
      */
     KEYMAP(FN4, TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS, \
-           NLCK,P7,  P8,  P9,  TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,      \
+           NLCK,P7,  P8,  P9,  TRNS,TRNS,ACL0,ACL1,ACL2,TRNS,TRNS,TRNS,TRNS,TRNS,      \
            PENT,P4,  P5,  P6,  PAST,PSLS,MS_L,MS_D,MS_U,MS_R,TRNS,TRNS,TRNS,           \
            PEQL,P1,  P2,  P3,  PPLS,PMNS,BTN1,BTN2,BTN3,TRNS,TRNS,TRNS,TRNS,           \
                 PDOT,P0,            TRNS,               TRNS,TRNS),
