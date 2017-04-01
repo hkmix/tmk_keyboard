@@ -168,17 +168,13 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
       shift_down = get_mods() & SHIFT_DOWN;
       if (record->event.pressed) {
         if (shift_down) {
-          return MACRO(D(GRV), END);
+          return MACRO(T(GRV), END);
         } else {
-          return MACRO(D(ESC), END);
-        }
-      } else {
-        if (shift_down) {
-          return MACRO(U(GRV), END);
-        } else {
-          return MACRO(U(ESC), END);
+          return MACRO(T(ESC), END);
         }
       }
       break;
   }
+
+  return MACRO(END);
 }
