@@ -44,16 +44,16 @@ const uint8_t keymaps[][MATRIX_ROWS][MATRIX_COLS] PROGMEM = {
      * |-----------------------------------------------------------|
      * | Ctrl | A | S | D | F | G | H | J | K | L | ; | ' | Enter  |
      * |-----------------------------------------------------------|
-     * | Shift  | Z | X | C | V | B | N | M | , | . | / |Shift |Fn0|
+     * | Shift  | Z | X | C | V | B | N | M | , | . | / |Shift |Fn1|
      * `-----------------------------------------------------------'
-     *       |Alt| Gui |         Space         | Gui |Alt|
+     *       |Alt| Gui |         Space         | Gui |Fn5|
      *       `-------------------------------------------'
      */
     KEYMAP(FN0, 1,   2,   3,   4,   5,   6,   7,   8,   9,   0,   MINS,EQL, BSLS,GRV,   \
            TAB, Q,   W,   E,   R,   T,   Y,   U,   I,   O,   P,   LBRC,RBRC,BSPC,       \
            LCTL,A,   S,   D,   F,   G,   H,   J,   K,   L,   SCLN,QUOT,ENT,             \
            LSFT,Z,   X,   C,   V,   B,   N,   M,   COMM,DOT, SLSH,RSFT,FN1,             \
-                LALT,LGUI,          SPC,                RGUI,RALT),
+                LALT,LGUI,          SPC,                RGUI,FN5),
 
     /* Layer 1: Standard MacBook ANSI Layer
      * ,-----------------------------------------------------------.
@@ -63,7 +63,7 @@ const uint8_t keymaps[][MATRIX_ROWS][MATRIX_COLS] PROGMEM = {
      * |-----------------------------------------------------------|
      * | Ctrl | A | S | D | F | G | H | J | K | L | ; | ' | Enter  |
      * |-----------------------------------------------------------|
-     * | Shift  | Z | X | C | V | B | N | M | , | . | / |Shift |Fn0|
+     * | Shift  | Z | X | C | V | B | N | M | , | . | / |Shift |Fn1|
      * `-----------------------------------------------------------'
      *       |Alt| Gui |         Space         | Gui |Alt|
      *       `-------------------------------------------'
@@ -82,7 +82,7 @@ const uint8_t keymaps[][MATRIX_ROWS][MATRIX_COLS] PROGMEM = {
      * |-----------------------------------------------------------|
      * | Ctrl | A | S | D | F | G | H | J | K | L | ; | ' | Enter  |
      * |-----------------------------------------------------------|
-     * | Shift  | Z | X | C | V | B | N | M | , | . | / |Shift |Fn0|
+     * | Shift  | Z | X | C | V | B | N | M | , | . | / |Shift |Fn1|
      * `-----------------------------------------------------------'
      *       |Gui| Alt |         Space         | Alt |Gui|
      *       `-------------------------------------------'
@@ -114,21 +114,21 @@ const uint8_t keymaps[][MATRIX_ROWS][MATRIX_COLS] PROGMEM = {
 
     /* Layer 4: Vim and number pad Layer
      * ,-----------------------------------------------------------.
-     * |VL |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
+     * |VL |AC0|AC1|AC2|   |   |   |   |   |   |   |   |   |   |   |
      * |-----------------------------------------------------------|
-     * |NmLk | 7 | 8 | 9 |   |   |AC0|AC1|AC2|   |   |   |   |     |
+     * |NmLk | 7 | 8 | 9 |   |   |   |   |   |   |   |   |   |     |
      * |-----------------------------------------------------------|
-     * |Enter | 4 | 5 | 6 | * | / |M< |MV |M^ |M> |   |   |        |
+     * |Enter | 4 | 5 | 6 | * | / |   |MB1|M^ |MB2|   |   |        |
      * |-----------------------------------------------------------|
-     * |   =    | 1 | 2 | 3 | + | - |LMB|MMB|RMB|   |   |      |   |
+     * |   =    | 1 | 2 | 3 | + | - |MB3|M< |Mv |M> |   |      |   |
      * `-----------------------------------------------------------'
      *       | . |  0  |                       |     |   |
      *       `-------------------------------------------'
      */
-    KEYMAP(FN4, TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS, \
-           NLCK,P7,  P8,  P9,  TRNS,TRNS,ACL0,ACL1,ACL2,TRNS,TRNS,TRNS,TRNS,TRNS,      \
-           PENT,P4,  P5,  P6,  PAST,PSLS,MS_L,MS_D,MS_U,MS_R,TRNS,TRNS,TRNS,           \
-           PEQL,P1,  P2,  P3,  PPLS,PMNS,BTN1,BTN2,BTN3,TRNS,TRNS,TRNS,TRNS,           \
+    KEYMAP(FN4, ACL0,ACL1,ACL2,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS, \
+           NLCK,P7,  P8,  P9,  TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,      \
+           PENT,P4,  P5,  P6,  PAST,PSLS,TRNS,BTN1,MS_U,BTN2,TRNS,TRNS,TRNS,           \
+           PEQL,P1,  P2,  P3,  PPLS,PMNS,BTN3,MS_L,MS_D,MS_R,TRNS,TRNS,TRNS,           \
                 PDOT,P0,            TRNS,               TRNS,TRNS),
 };
 
@@ -149,6 +149,7 @@ const action_t fn_actions[] __attribute__ ((section (".keymap.fn_actions"))) = {
     [2] = ACTION_LAYER_TOGGLE(TL),
     [3] = ACTION_LAYER_TOGGLE(MBL),
     [4] = ACTION_LAYER_TOGGLE(VL),
+    [4] = ACTION_LAYER_MOMENTARY(VL),
 };
 #else
 const action_t fn_actions[] PROGMEM = {
@@ -156,7 +157,7 @@ const action_t fn_actions[] PROGMEM = {
     [1] = ACTION_LAYER_MOMENTARY(FL),
     [2] = ACTION_LAYER_TOGGLE(TL),
     [3] = ACTION_LAYER_TOGGLE(MBL),
-    [4] = ACTION_LAYER_TOGGLE(VL),
+    [4] = ACTION_LAYER_MOMENTARY(VL),
 };
 #endif
 
