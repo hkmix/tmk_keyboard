@@ -101,7 +101,7 @@ const uint8_t keymaps[][MATRIX_ROWS][MATRIX_COLS] PROGMEM = {
      * |-----------------------------------------------------------|
      * |      |V- |V+ |Vm |   |   | * | / |Hom|PgU|Lft|Rgt| Enter  |
      * |-----------------------------------------------------------|
-     * |        |F14|F15|FN4|FN3|FN2| + | - |End|PgD|Dwn|      |   |
+     * |        |F14|F15|FN4|FN3|FN2| + | - |End|PgD|Dwn|      |xxx|
      * `-----------------------------------------------------------'
      *       |   |     |                       |     |   |
      *       `-------------------------------------------'
@@ -109,7 +109,7 @@ const uint8_t keymaps[][MATRIX_ROWS][MATRIX_COLS] PROGMEM = {
     KEYMAP(GRV, F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9,  F10, F11, F12, INS, DEL, \
            CAPS,MPRV,MPLY,MNXT,MSTP,TRNS,TRNS,TRNS,PSCR,SLCK,PAUS,UP,  TRNS,BSPC,     \
            TRNS,VOLD,VOLU,MUTE,TRNS,TRNS,PAST,PSLS,HOME,PGUP,LEFT,RGHT,PENT,          \
-           TRNS, F14, F15, FN4, FN3, FN2, PPLS,PMNS,END, PGDN,DOWN,TRNS,TRNS,          \
+           TRNS,F14, F15, FN4, FN3, FN2, PPLS,PMNS,END, PGDN,DOWN,TRNS,TRNS,          \
                 TRNS,TRNS,          TRNS,               TRNS,TRNS),
 
     /* Layer 4: Vim and number pad Layer
@@ -118,17 +118,17 @@ const uint8_t keymaps[][MATRIX_ROWS][MATRIX_COLS] PROGMEM = {
      * |-----------------------------------------------------------|
      * |NmLk | 7 | 8 | 9 |   |   |   |   |   |   |   |   |   |     |
      * |-----------------------------------------------------------|
-     * |Enter | 4 | 5 | 6 | * | / |   |MB1|M^ |MB2|   |   |        |
+     * |Enter | 4 | 5 | 6 | * | / |   |MB1|M^ |MB2|MW^|   |        |
      * |-----------------------------------------------------------|
-     * |   =    | 1 | 2 | 3 | + | - |MB3|M< |Mv |M> |   |      |   |
+     * |   =    | 1 | 2 | 3 | + | - |MB3|M< |Mv |M> |MWv|      |   |
      * `-----------------------------------------------------------'
-     *       | . |  0  |                       |     |   |
+     *       | . |  0  |                       |     |xxx|
      *       `-------------------------------------------'
      */
     KEYMAP(FN4, ACL0,ACL1,ACL2,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS, \
            NLCK,P7,  P8,  P9,  TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,      \
-           PENT,P4,  P5,  P6,  PAST,PSLS,TRNS,BTN1,MS_U,BTN2,TRNS,TRNS,TRNS,           \
-           PEQL,P1,  P2,  P3,  PPLS,PMNS,BTN3,MS_L,MS_D,MS_R,TRNS,TRNS,TRNS,           \
+           PENT,P4,  P5,  P6,  PAST,PSLS,TRNS,BTN1,MS_U,BTN2,WH_U,TRNS,TRNS,           \
+           PEQL,P1,  P2,  P3,  PPLS,PMNS,BTN3,MS_L,MS_D,MS_R,WH_D,TRNS,TRNS,           \
                 PDOT,P0,            TRNS,               TRNS,TRNS),
 };
 
@@ -149,7 +149,7 @@ const action_t fn_actions[] __attribute__ ((section (".keymap.fn_actions"))) = {
     [2] = ACTION_LAYER_TOGGLE(TL),
     [3] = ACTION_LAYER_TOGGLE(MBL),
     [4] = ACTION_LAYER_TOGGLE(VL),
-    [4] = ACTION_LAYER_MOMENTARY(VL),
+    [5] = ACTION_LAYER_MOMENTARY(VL),
 };
 #else
 const action_t fn_actions[] PROGMEM = {
@@ -157,7 +157,8 @@ const action_t fn_actions[] PROGMEM = {
     [1] = ACTION_LAYER_MOMENTARY(FL),
     [2] = ACTION_LAYER_TOGGLE(TL),
     [3] = ACTION_LAYER_TOGGLE(MBL),
-    [4] = ACTION_LAYER_MOMENTARY(VL),
+    [4] = ACTION_LAYER_TOGGLE(VL),
+    [5] = ACTION_LAYER_MOMENTARY(VL),
 };
 #endif
 
