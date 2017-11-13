@@ -114,21 +114,21 @@ const uint8_t keymaps[][MATRIX_ROWS][MATRIX_COLS] PROGMEM = {
 
     /* Layer 4: Vim and number pad Layer
      * ,-----------------------------------------------------------.
-     * |VL |AC0|AC1|AC2|   |   |   |   |   |   |   |   |   |   |   |
+     * |VL |Nlk| / | * | - |   |   |   |   |   |   |   |   |   |Usr|
      * |-----------------------------------------------------------|
-     * |NmLk | 7 | 8 | 9 |   |   |   |   |   |   |   |   |   |     |
+     * |NmLk | 7 | 8 | 9 | + |   |   |   |   |   |   |   |   |     |
      * |-----------------------------------------------------------|
-     * |Enter | 4 | 5 | 6 | * | / |   |MB1|M^ |MB2|MW^|   |        |
+     * |Enter | 4 | 5 | 6 | + |   |   |MB1|M^ |MB2|MW^|   |        |
      * |-----------------------------------------------------------|
-     * |   =    | 1 | 2 | 3 | + | - |MB3|M< |Mv |M> |MWv|      |   |
+     * |   =    | 1 | 2 | 3 |Ent|   |MB3|M< |Mv |M> |MWv|      |   |
      * `-----------------------------------------------------------'
      *       | . |  0  |                       |     |xxx|
      *       `-------------------------------------------'
      */
-    KEYMAP(FN4, ACL0,ACL1,ACL2,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS, \
-           NLCK,P7,  P8,  P9,  TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,      \
-           PENT,P4,  P5,  P6,  PAST,PSLS,TRNS,BTN1,MS_U,BTN2,WH_U,TRNS,TRNS,           \
-           PEQL,P1,  P2,  P3,  PPLS,PMNS,BTN3,MS_L,MS_D,MS_R,WH_D,TRNS,TRNS,           \
+    KEYMAP(FN4, NLCK,PSLS,PAST,PMNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,FN6 , \
+           NLCK,P7,  P8,  P9,  PPLS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,      \
+           PENT,P4,  P5,  P6,  PPLS,TRNS,TRNS,BTN1,MS_U,BTN2,WH_U,TRNS,TRNS,           \
+           PEQL,P1,  P2,  P3,  PENT,PMNS,BTN3,MS_L,MS_D,MS_R,WH_D,TRNS,TRNS,           \
                 PDOT,P0,            TRNS,               TRNS,TRNS),
 };
 
@@ -137,6 +137,7 @@ const uint8_t keymaps[][MATRIX_ROWS][MATRIX_COLS] PROGMEM = {
  */
 enum function_id {
     SHIFT_ESC,
+    WHOAMI,
 };
 
 /*
@@ -150,6 +151,7 @@ const action_t fn_actions[] __attribute__ ((section (".keymap.fn_actions"))) = {
     [3] = ACTION_LAYER_TOGGLE(MBL),
     [4] = ACTION_LAYER_TOGGLE(VL),
     [5] = ACTION_LAYER_MOMENTARY(VL),
+    [6] = ACTION_MACRO(WHOAMI),
 };
 #else
 const action_t fn_actions[] PROGMEM = {
@@ -159,6 +161,7 @@ const action_t fn_actions[] PROGMEM = {
     [3] = ACTION_LAYER_TOGGLE(MBL),
     [4] = ACTION_LAYER_TOGGLE(VL),
     [5] = ACTION_LAYER_MOMENTARY(VL),
+    [6] = ACTION_MACRO(WHOAMI),
 };
 #endif
 
@@ -166,16 +169,52 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
 {
   static uint8_t shift_down;
   switch (id) {
-    case SHIFT_ESC:
-      shift_down = get_mods() & SHIFT_DOWN;
-      if (record->event.pressed) {
-        if (shift_down) {
-          return MACRO(T(GRV), END);
-        } else {
-          return MACRO(T(ESC), END);
-        }
+  case SHIFT_ESC:
+    shift_down = get_mods() & SHIFT_DOWN;
+    if (record->event.pressed) {
+      if (shift_down) {
+        return MACRO(T(GRV), END);
+      } else {
+        return MACRO(T(ESC), END);
       }
-      break;
+    }
+    break;
+
+  case WHOAMI:
+    if (record->event.pressed) {
+      return MACRO(
+          D(LSFT), T(P), U(LSFT),
+          T(R),
+          T(O),
+          T(P),
+          T(E),
+          T(R),
+          T(T),
+          T(Y),
+          T(SPC),
+          T(O),
+          T(F),
+          T(SPC),
+          D(LSFT), T(J), U(LSFT),
+          T(A),
+          T(C),
+          T(K),
+          T(SPC),
+          D(LSFT), T(Z), U(LSFT),
+          T(H),
+          T(O),
+          T(U),
+          T(SPC),
+          D(LSFT), T(9),
+          T(2), U(LSFT),
+          T(H),
+          T(K),
+          T(M),
+          T(I),
+          T(X),
+          D(LSFT), T(0), U(LSFT),
+      );
+    }
   }
 
   return MACRO(END);
