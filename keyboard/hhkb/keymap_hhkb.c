@@ -126,7 +126,7 @@ const uint8_t keymaps[][MATRIX_ROWS][MATRIX_COLS] PROGMEM = {
      *       `-------------------------------------------'
      */
     KEYMAP(FN4, NLCK,PSLS,PAST,PMNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,FN6 , \
-           NLCK,P7,  P8,  P9,  PPLS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,      \
+           NLCK,P7,  P8,  P9,  PPLS,TRNS,TRNS,WH_L,WH_R,TRNS,TRNS,TRNS,TRNS,TRNS,      \
            PENT,P4,  P5,  P6,  PPLS,TRNS,TRNS,BTN1,MS_U,BTN2,WH_U,TRNS,TRNS,           \
            PEQL,P1,  P2,  P3,  PENT,PMNS,BTN3,MS_L,MS_D,MS_R,WH_D,TRNS,TRNS,           \
                 PDOT,P0,            TRNS,               TRNS,TRNS),
